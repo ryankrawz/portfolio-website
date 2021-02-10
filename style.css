@@ -1,10 +1,8 @@
-body {
-    width: 0 auto;
-}
-
 .header-nav-bar {
     width: 100%;
     text-align: left;
+    top: 0;
+    left: 0;
     box-sizing: border-box;
     background-image: url("assets/about/bcsunset.jpg");
     background-position: top;
@@ -29,4 +27,25 @@ body {
     margin: 0.5%;
     padding: 0.25%;
     cursor: pointer;
+    font: 100% Arial;
+    color: white;
+    background-color: maroon;
+}
+
+.nav-button:focus {
+    color: maroon;
+    background-color: white;
+}
+
+main {
+    font: 100% Arial;
+}
+
+.section-header {
+    font: 200% bold Garamond;
+    color: maroon;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-color: maroon;
+    padding: 1%;
 }
