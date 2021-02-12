@@ -1,35 +1,42 @@
+main {
+    font: 100% Arial;
+}
+
 .header-nav-bar {
     width: 100%;
     text-align: left;
     top: 0;
     left: 0;
     box-sizing: border-box;
-    background-image: url("assets/about/bcsunset.jpg");
-    background-position: top;
 }
 
 #home-page-header {
     padding-left: 2%;
-    padding-top: 1%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    text-align: center;
+    background-image: url("assets/about/bcsunset.jpg");
+    background-position: top;
 }
 
 #home-page-header-text {
     color: white;
-    font: 400% bold Garamond;
+    font: 300% bold Garamond;
 }
 
 #home-page-nav-bar {
-    padding-left: 2%;
-    padding-bottom: 2%;
+    display: none;
 }
 
 .nav-button {
-    margin: 0.5%;
     padding: 0.25%;
     cursor: pointer;
     font: 100% Arial;
     color: white;
+    display: block;
     background-color: maroon;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .nav-button:focus {
@@ -37,8 +44,33 @@
     background-color: white;
 }
 
-main {
-    font: 100% Arial;
+.open-nav {
+    position: fixed;
+    display: block;
+    top: 10px;
+    right: 10px;
+}
+
+#nav-menu {
+    display: none;
+    position: fixed;
+    top: 55px;
+    right: 10px;
+}
+
+.open-nav:focus + #nav-menu {
+    display: block;
+}
+
+.open-nav:focus > .nav-icon-bar {
+    background-color: maroon;
+}
+
+.nav-icon-bar {
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    margin: 6px;
 }
 
 .section-header {
@@ -48,4 +80,58 @@ main {
     border-bottom: 2px solid;
     border-color: maroon;
     padding: 1%;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.item-desc {
+    margin-top: 1%;
+}
+
+@media only screen and (min-width: 768px) {
+    .header-nav-bar {
+        background-image: url("assets/about/bcsunset.jpg");
+        background-position: top;
+    }
+    
+    #home-page-header {
+        padding-bottom: 0%;
+        text-align: left;
+    }
+    
+    #home-page-header-text {
+        font: 400% bold Garamond;
+    }
+    
+    #home-page-nav-bar {
+        padding-left: 2%;
+        padding-bottom: 2%;
+        display: block;
+    }
+
+    .nav-button {
+        margin: 0.5%;
+        display: inline;
+    }
+
+    .open-nav {
+        display: none;
+    }
+
+    .flex-container {
+        flex-flow: row;
+        justify-content: left;
+    }
+
+    .item-desc {
+        margin-top: 0;
+        margin-left: 2%;
+        padding-left: 2%;
+        border-left: 1px solid;
+        border-color: maroon;
+    }
 }
