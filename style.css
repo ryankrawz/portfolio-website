@@ -58,10 +58,6 @@ main {
     right: 10px;
 }
 
-.open-nav:focus + #nav-menu {
-    display: block;
-}
-
 .open-nav:focus > .nav-icon-bar {
     background-color: maroon;
 }
