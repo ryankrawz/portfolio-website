@@ -85,11 +85,124 @@ main {
 .flex-container {
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    align-items: center;
+    margin: 4%;
+}
+
+.flex-slideshow {
+    display: flex;
+    flex-flow: column wrap;
 }
 
 .item-desc {
     margin-top: 1%;
+}
+
+@keyframes auto-slides {
+    25% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+}
+
+[class^=slideshow-] {
+    width: 25%;
+    height: 0;
+    padding-bottom: 60%;
+    padding-left: 10%;
+    padding-right: 10%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slideshow-2 img {
+    position: absolute;
+    animation: auto-slides 10s infinite;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+}
+
+.slideshow-3 img {
+    position: absolute;
+    animation: auto-slides 15s infinite;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+}
+
+.slideshow-4 img {
+    position: absolute;
+    animation: auto-slides 20s infinite;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+}
+
+.slideshow-5 img {
+    position: absolute;
+    animation: auto-slides 25s infinite;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+}
+
+.slideshow-2 img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slideshow-3 img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slideshow-4 img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slideshow-5 img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slideshow-2 img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.slideshow-3 img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.slideshow-4 img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.slideshow-5 img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.slideshow-3 img:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.slideshow-4 img:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.slideshow-5 img:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.slideshow-4 img:nth-child(4) {
+    animation-delay: 15s;
+}
+
+.slideshow-5 img:nth-child(4) {
+    animation-delay: 15s;
+}
+
+.slideshow-5 img:nth-child(5) {
+    animation-delay: 20s;
 }
 
 @media only screen and (min-width: 768px) {
@@ -124,7 +237,11 @@ main {
 
     .flex-container {
         flex-flow: row;
-        justify-content: left;
+        align-items: stretch;
+    }
+
+    .flex-slideshow {
+        flex-flow: row wrap;
     }
 
     .item-desc {
@@ -133,5 +250,9 @@ main {
         padding-left: 2%;
         border-left: 1px solid;
         border-color: maroon;
+    }
+
+    .project-desc {
+        margin: 1%;
     }
 }
