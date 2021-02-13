@@ -231,6 +231,10 @@ main {
         display: none;
     }
 
+    [id$=-nav-option] {
+        display: none;
+    }
+
     .flex-container {
         flex-flow: row;
         align-items: stretch;
