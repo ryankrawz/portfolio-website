@@ -1,0 +1,67 @@
+{
+    "head": {
+        "title": "Ryan Krawczyk"
+    },
+    "body": {
+        "About": {
+            "name": "Ryan Krawczyk",
+            "photo": "assets/about/headshot.jpg",
+            "desc": "Ryan is a Boston College computer science and finance major originally from Baltimore, MD. Thanks to his academic and professional experiences, he has acquired a wide range of skills in full stack engineering and machine learning, and will be joining InterSystems in Boston full-time as a solutions development engineer. Some of Ryan's hobbies include food, traveling, sci-fi novels, and Scorsese movies."
+        },
+        "Academic & Professional Experiences": {
+            "Boston College": {
+                "photo": "assets/experiences/gassonsunset.jpg",
+                "desc": "<a id=\"boston-college-link\" href=\"https://www.bc.edu\" target=\"_blank\">Boston College</a> is a world-renowned Catholic university in Boston, MA. Aside from studying computer science and finance, Ryan has also participated in 4Boston and the BC Investment Fund. A couple of his favorite activities are running by the Res and getting brunch at Cityside Tavern or Cafe Landwer."
+            },
+            "InterSystems": {
+                "photo": "assets/experiences/intersystemslogo.png",
+                "desc": "<a id=\"intersystems-link\" href=\"https://www.intersystems.com\" target=\"_blank\">InterSystems</a> is an international, privately owned data management company pointed at the finance, healthcare, business, and government spaces. Ryan will be coming on board as a solutions development engineer at the Boston location."
+            },
+            "Boston College Investment Fund": {
+                "photo": "assets/experiences/bciclogo.jpg",
+                "desc": "<a id=\"investment-fund-link\" href=\"https://www.bostoncollegeinvestmentclub.com\" target=\"_blank\">The Boston College Investment Fund</a> takes a bottum-up, low-risk approach to investing its capital, of which it has over $1 million. The Fund's portfolio has exposure to several industries, with technology and consumer discretionary being chief among them. Ryan has worked as a senior analyst covering the tech sector for all four of his years at BC."
+            },
+            "Codementor": {
+                "photo": "assets/experiences/codementorlogo.png",
+                "desc": "<a id=\"codementor-link\" href=\"https://www.codementor.io\" target=\"_blank\">Codementor</a> is a crowdsourced platform for facilitating the bidding for and development of freelance coding projects. The cryptocurrency trading project is an example of Ryan's work as a mentor."
+            },
+            "Gravyty": {
+                "photo": "assets/experiences/gravytylogo.png",
+                "desc": "<a id=\"gravyty-link\" href=\"https://www.gravyty.com\" target=\"_blank\">Gravyty</a> offers machine learning products to fundraisers like nonprofits and higher education institutions in order to streamline the fundraising process. Ryan has spent two summers with the company, one as a full stack engineer and one as a machine learning engineer, and still remains close with many of his former coworkers there."
+            },
+            "Amazon Alexa": {
+                "photo": "assets/experiences/alexalogo.png",
+                "desc": "In the summer of 2018, Boston College hosted a research collaboration with the goal of developing an <a id=\"alexa-link\" href=\"https://developer.amazon.com/en-US/alexa\" target=\"_blank\">Alexa</a> skill for the classroom. Ryan was honored to be a part of this project, and developed features for organizing students into groups and calling a random name from the Canvas roster."
+            }
+        },
+        "Class Projects": {
+            "Game of Risk Network Model": {
+                "link": "https://github.com/ryankrawz/Game-of-Risk-Network-Model",
+                "desc": "A Python application implementing the NetworkX library that accepts a data file to construct a dynamic, graph-based visualization of the Game of Risk. Players can battle each other through command line IO or play against the program's probabilistic model."
+            },
+            "Cryptocurrency Trading Algorithm": {
+                "link": "https://github.com/ryankrawz/crypto-trading-algorithm",
+                "desc": "A Python cryptocurrency trading client that utilizes a strategy based on exponential moving average."
+            },
+            "Flow Network Object-Oriented Design": {
+                "link": "https://github.com/ryankrawz/networkx-max-flow",
+                "desc": "A Python program implementing the NetworkX library that offers utilities for constructing and visualizing a graph as well as calculating max flow."
+            },
+            "Pocket Movie": {
+                "link": "assets/projects/pocketmovieposter.pdf",
+                "desc": "A project applying a recurrent neural network to generate movie scripts."
+            }
+        },
+        "Travels": {
+            "London": ["assets/travels/londonriver.jpg", "assets/travels/bigben.jpg", "assets/travels/camdentown.jpg"],
+            "Amsterdam": ["assets/travels/amsterdamcanal.jpg", "assets/travels/amsterdamsunset.jpg"],
+            "Paris": ["assets/travels/eiffeltower.jpg", "assets/travels/versailles.jpg", "assets/travels/versailleslawn.jpg", "assets/travels/eiffeltowerfireworks.jpg"],
+            "Rome": ["assets/travels/colosseum.jpg", "assets/travels/romestreet.jpg", "assets/travels/trevifountain.jpg", "assets/travels/vatican.jpg"],
+            "Venice": ["assets/travels/venicecanal.jpg", "assets/travels/veniceduomo.jpg", "assets/travels/venicegondolas.jpg"],
+            "Zurich": ["assets/travels/zurichlake.jpg", "assets/travels/zurichmountain.jpg", "assets/travels/zurichnight.jpg"],
+            "Madrid": ["assets/travels/madridcathedral.jpg", "assets/travels/madridchurch.jpg", "assets/travels/madridpalace.jpg", "assets/travels/madridpond.jpg"],
+            "Seville": ["assets/travels/sevillecathedral.jpg", "assets/travels/sevillehouse.jpg", "assets/travels/sevillerooftops.jpg", "assets/travels/sevilletower.jpg", "assets/travels/sevillegardens.jpg"],
+            "Stockholm": ["assets/travels/stockholmriver.jpg", "assets/travels/stockholmtrees.jpg"]
+        }
+    }
+}
