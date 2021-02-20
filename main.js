@@ -1,10 +1,36 @@
-function renderNavBar(sections) {
-    // Render nav bar
+// Capitalize first letter of string
+function capitalize(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+// Render nav bar for main or project-specific page
+function renderNavBar(headings, project=null) {
+    const whichPage = project ? project.id : 'home';
+    return `
+        <button class="nav-button open-nav" onclick="toggleVisibility('nav-menu');">
+            <div class="nav-icon-bar"></div>
+            <div class="nav-icon-bar"></div>
+            <div class="nav-icon-bar"></div>
+        </button>
+        <div id="nav-menu">
+            ${project ? '<a id="back-option" href="."><button class="nav-button">< Back</button></a>' : ''}
+            ${headings.map(h => `<a id="${h}-nav-option" href="#${h}-section"><button class="nav-button">${capitalize(h)}</button></a>`).join('')}
+        </div>
+        <div class="header-nav-bar">
+            <header id="${whichPage}-page-header">
+                <h1 id="${whichPage}-page-header-text">${project ? project.title : 'Ryan Krawczyk'}</h1>
+            </header>
+            <nav id="${whichPage}-page-nav-bar">
+                ${project ? '<a id="back-option" href="."><button class="nav-button">< Back</button></a>' : ''}
+                ${headings.map(h => `<a id="${h}-section-link" href="#${h}-section"><button class="nav-button">${capitalize(h)}</button></a>`).join('')}
+            </nav>
+        </div>
+    `;
 }
 
 // Render about section
 function renderAbout(about) {
-    document.querySelector('#about-flex-container').innerHTML = `
+    return `
         <img id="about-image" src="${about.photo}" alt="${about.name}" width="18.75%">
         <span id="about-bio" class="item-desc">${about.desc}</span>
     `;
@@ -12,7 +38,7 @@ function renderAbout(about) {
 
 // Render experiences section
 function renderExperiences(experiences) {
-    document.querySelector('#experiences-container').innerHTML = experiences.map(e => `
+    return experiences.map(e => `
         <div class="flex-container">
             <img id="${e.id}-img" src="${e.photo}" alt="${e.title}" width="11.7%">
             <span id="${e.id}-desc" class="item-desc">${e.desc}</span>
@@ -22,15 +48,29 @@ function renderExperiences(experiences) {
 
 // Render projects section
 function renderProjects(projects) {
-    document.querySelector('#projects-container').innerHTML = projects.map(p => `
+    return projects.map(p => `
         <a id="${p.id}-link" href="?project=${p.id}">${p.title}</a>
-        <p id="${p.id}-desc" class="item-desc project-desc">${p.desc}</p>
+        <p id="${p.id}-desc" class="item-desc project-desc">
+            ${p.tags.map(t => `<span id="${t[0].toLowerCase()}-tag">${t}</span>`).join('')}
+        </p>
     `).join('');
+}
+
+// Render project details for project-specific page
+function renderProjectDetails(project) {
+    return `
+        <section id="description-section">
+            <p id="${project.id}-desc" class="item-desc project-desc">${project.desc}</p>
+        </section>
+        <section id="media-section">
+            ${project.media}
+        </section>
+    `;
 }
 
 // Render travels section
 function renderTravels(travels) {
-    document.querySelector('#home-page-travels-section .flex-slideshow').innerHTML = travels.map(t => `
+    return travels.map(t => `
         <div class="slideshow-${t.media.length}">
             <h3 id="${t.location.toLowerCase()}-title">${t.location}</h3>
             ${t.media.map(m => `<img src="${m.link}" alt="${t.location}" width="${m.width}">`).join('')}
@@ -40,11 +80,37 @@ function renderTravels(travels) {
 
 // Render nav bar and all sections of page
 function renderMainPage(data) {
-    renderNavBar(Object.keys(data.body));
-    renderAbout(data.body.about);
-    renderExperiences(data.body.experiences);
-    renderProjects(data.body.projects);
-    renderTravels(data.body.travels);
+    document.querySelector('body').innerHTML = `
+        ${renderNavBar(Object.keys(data.body))}
+        <main id="home-page-main">
+            <section id="about-section">
+                <h3 id="about-header" class="section-header">About</h3>
+                <div id="about-flex-container" class="flex-container">${renderAbout(data.body.about)}</div>
+            </section>
+            <section id="experiences-section">
+                <h3 id="experiences-header" class="section-header">Academic & Professional Experiences</h3>
+                ${renderExperiences(data.body.experiences)}
+            </section>
+            <section id="projects-section">
+                <h3 id="projects-header" class="section-header">Class Projects</h3>
+                ${renderProjects(data.body.projects)}
+            </section>
+            <section id="travels-section">
+                <h3 id="travels-header" class="section-header">Travels</h3>
+                <div class="flex-slideshow">${renderTravels(data.body.travels)}</div>
+            </section>
+        </main>
+    `;
+}
+
+// Render project-specific nav bar and project details
+function renderProjectPage(project) {
+    document.querySelector('body').innerHTML = `
+        ${renderNavBar(['description', 'media'], project)}
+        <main id="${project.id}-page">
+            ${renderProjectDetails(project)}
+        </main>
+    `;
 }
 
 // Hide or display element based on current state
@@ -60,8 +126,22 @@ function toggleVisibility(id) {
 // Page loading process
 const dataTarget = 'data.json';
 fetch(dataTarget).then(response => {
-    console.log(`'${dataTarget}' ${response.ok ? 'successfully' : 'NOT'} retrieved, status code ${response.status}`);
+    if (!response.ok) {
+        console.error(`Failed to retrieve '${dataTarget}' with status code ${response.status}`);
+    }
     return response.json();
 }).then(data => {
-    renderMainPage(data);
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentProjectId = urlParams.get('project');
+    if (currentProjectId) {
+        const matchingProjects = data.body.projects.filter(p => p.id === currentProjectId);
+        if (matchingProjects.length === 1) {
+            renderProjectPage(matchingProjects[0]);
+        } else {
+            console.error(`Zero or multiple projects found for id '${currentProjectId}'`);
+            renderMainPage(data);
+        }
+    } else {
+        renderMainPage(data);
+    }
 });
