@@ -10,8 +10,9 @@ export default function renderNavBar(headings, project=null) {
             <div class="nav-icon-bar"></div>
         </button>
         <div id="nav-menu">
-            ${project ? '<a id="back-option" href="."><button class="nav-button">< Back</button></a>' : ''}
+            ${project ? '<a id="back-nav-option" href="."><button class="nav-button">< Back</button></a>' : ''}
             ${headings.map(h => `<a id="${h}-nav-option" href="#${h}-section"><button class="nav-button">${capitalize(h)}</button></a>`).join('')}
+            ${project ? `<a id="more-details-nav-option" href="${project.link}" target="_blank"><button class="nav-button">More ></button></a>` : ''}
         </div>
         <div class="header-nav-bar">
             <header id="${whichPage}-page-header">
@@ -20,7 +21,7 @@ export default function renderNavBar(headings, project=null) {
             <nav id="${whichPage}-page-nav-bar">
                 ${project ? '<a id="back-option" href="."><button class="nav-button">< Back</button></a>' : ''}
                 ${headings.map(h => `<a id="${h}-section-link" href="#${h}-section"><button class="nav-button">${capitalize(h)}</button></a>`).join('')}
-                ${project ? `<a id="more-details-option" href="${project.link}" target="_blank"><button class="nav-button">More Details</button></a>` : ''}
+                ${project ? `<a id="more-details-option" href="${project.link}" target="_blank"><button class="nav-button">More ></button></a>` : ''}
             </nav>
         </div>
     `;
