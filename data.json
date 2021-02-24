@@ -51,6 +51,7 @@
                 "id": "gameofrisk",
                 "title": "Game of Risk Network Model",
                 "media": "<iframe class=\"project-media\" src=\"https://www.youtube.com/embed/dcE5snxpASA\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+                "link": "https://github.com/ryankrawz/Game-of-Risk-Network-Model",
                 "tags": ["Python", "Network Science", "OO Programming"],
                 "desc": "A Python application implementing the NetworkX library that accepts a data file to construct a dynamic, graph-based visualization of the Game of Risk. Players can battle each other through command line IO or play against the program's probabilistic model."
             },
@@ -58,6 +59,7 @@
                 "id": "cryptoalgorithm",
                 "title": "Cryptocurrency Trading Algorithm",
                 "media": "<img class=\"project-media\" src=\"assets/projects/bitcoin.jpg\">",
+                "link": "https://github.com/ryankrawz/crypto-trading-algorithm",
                 "tags": ["Python", "Bitcoin", "Google Cloud Platform"],
                 "desc": "A Python cryptocurrency trading client that utilizes a strategy based on exponential moving average."
             },
@@ -65,6 +67,7 @@
                 "id": "flownetwork",
                 "title": "Flow Network Object-Oriented Design",
                 "media": "<img class=\"project-media\" src=\"assets/projects/flownetwork.jpg\">",
+                "link": "https://github.com/ryankrawz/networkx-max-flow",
                 "tags": ["Python", "Network Science"],
                 "desc": "A Python program implementing the NetworkX library that offers utilities for constructing and visualizing a graph as well as calculating max flow."
             },
@@ -72,6 +75,7 @@
                 "id": "pocketmovie",
                 "title": "Pocket Movie",
                 "media": "<img class=\"project-media\" src=\"assets/projects/pocketmovieposter.jpg\">",
+                "link": "https://github.com/ryankrawz/pocket-movie",
                 "tags": ["Python", "Machine Learning"],
                 "desc": "A project applying a recurrent neural network to generate movie scripts."
             }
