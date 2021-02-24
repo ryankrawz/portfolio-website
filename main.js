@@ -1,15 +1,21 @@
 // Add event handlers to main page
 function addHandlers(data) {
     // Search news by user input
+    document.querySelector('input[id="experiences-search"]').addEventListener('input', function(event) {
+        const searchExp = new RegExp(`${event.target.value}`, 'i');
+        const matchingExperiences = data.body.experiences.filter(e => searchExp.test(e.title));
+        document.querySelector('#experiences-container').innerHTML = renderExperiences(matchingExperiences);
+    });
 
     // Filter projects by radio button
     const projectRadioButtons = document.querySelectorAll('input[name="project-filter-option"]');
     projectRadioButtons.forEach(b => b.addEventListener('change', function(event) {
+        const projectsContainer = document.querySelector('#projects-container');
         if (event.target.value === 'All') {
-            document.querySelector('#projects-container').innerHTML = renderProjects(data.body.projects);
+            projectsContainer.innerHTML = renderProjects(data.body.projects);
         } else {
             const matchingProjects = data.body.projects.filter(p => p.tags.includes(event.target.value));
-            document.querySelector('#projects-container').innerHTML = renderProjects(matchingProjects);
+            projectsContainer.innerHTML = renderProjects(matchingProjects);
         }
     }));
 }
@@ -117,7 +123,9 @@ function renderMainPage(data) {
             <section id="experiences-section">
                 <h3 id="experiences-header" class="section-header">Academic & Professional Experiences</h3>
                 <input id="experiences-search" placeholder="Search ${data.body.about.name}'s experiences...">
-                ${renderExperiences(data.body.experiences)}
+                <div id="experiences-container">
+                    ${renderExperiences(data.body.experiences)}
+                </div>
             </section>
             <section id="projects-section">
                 <h3 id="projects-header" class="section-header">Class Projects</h3>
