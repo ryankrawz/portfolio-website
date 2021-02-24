@@ -1,6 +1,33 @@
+// Add event handlers to main page
+function addHandlers(data) {
+    // Search news by user input
+
+    // Filter projects by radio button
+    const projectRadioButtons = document.querySelectorAll('input[name="project-filter-option"]');
+    projectRadioButtons.forEach(b => b.addEventListener('change', function(event) {
+        if (event.target.value === 'All') {
+            document.querySelector('#projects-container').innerHTML = renderProjects(data.body.projects);
+        } else {
+            const matchingProjects = data.body.projects.filter(p => p.tags.includes(event.target.value));
+            document.querySelector('#projects-container').innerHTML = renderProjects(matchingProjects);
+        }
+    }));
+}
+
 // Capitalize first letter of string
 function capitalize(s) {
     return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+// Form list of tags from project data
+function getTags(projects) {
+    const tagSet = new Set(['All']);
+    for (let p of projects) {
+        for (let t of p.tags) {
+            tagSet.add(t);
+        }
+    }
+    return Array.from(tagSet);
 }
 
 // Render nav bar for main or project-specific page
@@ -89,11 +116,22 @@ function renderMainPage(data) {
             </section>
             <section id="experiences-section">
                 <h3 id="experiences-header" class="section-header">Academic & Professional Experiences</h3>
+                <input id="experiences-search" placeholder="Search ${data.body.about.name}'s experiences...">
                 ${renderExperiences(data.body.experiences)}
             </section>
             <section id="projects-section">
                 <h3 id="projects-header" class="section-header">Class Projects</h3>
-                ${renderProjects(data.body.projects)}
+                <div id="flex-project-filter">
+                    ${getTags(data.body.projects).map(t => `
+                        <label>
+                            <input type="radio" name="project-filter-option" value="${t}" ${t === 'All' ? 'checked' : ''}>
+                            ${t}
+                        </label>
+                    `).join('')}
+                </div>
+                <div id="projects-container">
+                    ${renderProjects(data.body.projects)}
+                </div>
             </section>
             <section id="travels-section">
                 <h3 id="travels-header" class="section-header">Travels</h3>
@@ -101,6 +139,7 @@ function renderMainPage(data) {
             </section>
         </main>
     `;
+    addHandlers(data);
 }
 
 // Render project-specific nav bar and project details

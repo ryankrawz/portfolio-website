@@ -85,6 +85,18 @@ main {
     margin: 4%;
 }
 
+#flex-project-filter {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: left;
+    margin: 2%;
+    margin-bottom: 3%;
+}
+
+#flex-project-filter label {
+    margin: 0.5%;
+}
+
 .flex-slideshow {
     display: flex;
     flex-flow: column wrap;
@@ -92,6 +104,15 @@ main {
 
 .item-desc {
     margin-top: 1%;
+}
+
+#experiences-search {
+    width: 90%;
+    margin-left: 4%;
+    font-size: 80%;
+    border: 2px solid maroon;
+    border-radius: 5px;
+    padding: 0.5%;
 }
 
 [id$=-tag] {
@@ -281,6 +302,16 @@ main {
         align-items: stretch;
     }
 
+    #flex-project-filter {
+        flex-flow: row;
+        align-items: stretch;
+        margin-bottom: 2%;
+    }
+
+    #flex-project-filter label {
+        margin: 1%;
+    }
+
     .flex-slideshow {
         flex-flow: row wrap;
     }
@@ -291,6 +322,11 @@ main {
         padding-left: 2%;
         border-left: 1px solid;
         border-color: maroon;
+    }
+
+    #experiences-search {
+        width: 50%;
+        font-size: 100%;
     }
 
     .project-desc {
